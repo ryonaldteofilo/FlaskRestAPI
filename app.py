@@ -39,7 +39,7 @@ def create_app(db_url=None):
     api.register_blueprint(tagblueprint)
     api.register_blueprint(userblueprint)
 
-    app.config["JWT_SECRET_KEY"] = "test"
+    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "test")
     jwt = JWTManager(app)
 
     @jwt.token_in_blocklist_loader
@@ -71,7 +71,8 @@ def create_app(db_url=None):
 
     @jwt.additional_claims_loader
     def add_claims_to_jwt(identity):
-        if identity == 1:
+        admin_id = os.getenv("ADMIN_USER_ID", 1)
+        if identity == admin_id:
             return {"is_admin": True}
         return {"is_admin": False}
 
