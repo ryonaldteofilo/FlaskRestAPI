@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields
 
-
+# Plain schema, used for nesting
 class PlainItemSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(required=True)
@@ -17,6 +17,9 @@ class PlainStoreSchema(Schema):
     name = fields.Str(required=True)
 
 
+
+
+# Schemas
 class ItemUpdateSchema(Schema):
     name = fields.Str()
     price = fields.Float()
