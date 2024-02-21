@@ -1,5 +1,5 @@
 # FlaskRestAPI
-A simple RESTful API written with Python, Flask and its extensions.
+A simple RESTful API written with Flask and its extensions.
 
 ## Features
 - JWT integration with Flask-JWT-Extended.
